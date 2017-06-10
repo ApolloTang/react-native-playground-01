@@ -18,10 +18,12 @@ import { func, number, bool, string, object, arrayOf } from 'prop-types';
 import { mapStoreToProps, mapDispatchToProps } from './selector';
 
 /////////////////////////////////////////
-// ref:
+// ref tile:
 // https://medium.com/@emilios1995/implementing-a-tile-view-in-react-native-a-la-ios-12f94c084f4b
+// ref onLayout change:
+// https://corbt.com/posts/2016/03/16/detecting-orientation-in-react-native.html
+//
 
-const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -54,11 +56,20 @@ const Item = ({size, margin, text}) => (
 
 class Lab extends React.Component {
   _onLayout = e => {
+    // const {width} = Dimensions.get('window');
     const ne_layout = e.nativeEvent.layout;
-    console.log('yyyyyy layout change width: ', width, ne_layout)
+    console.log('yyyyyy layout change width: ', this, ne_layout)
+    this._w = ne_layout.width;
+    this.setState({w:this._w})
+  }
+  componentDidMount() {
+    const {width} = Dimensions.get('window');
+    console.log('ooooooooooooooo componentDidMount: ',  width)
   }
   render() {
-    const tileDimensions = calcTileDimensions(width, 2)  // -> change this number and see!
+    // const {width} = Dimensions.get('window');
+    console.log('zzzzz render:  width: ', this._w)
+    const tileDimensions = calcTileDimensions(this._w, 2)  // -> change this number and see!
     const tiles = 'Lorem Ipsum Dolor Sit Amet'.split(' ')
     return (
       <View
@@ -81,8 +92,9 @@ class Screen_Dashboard extends React.Component {
     super(props);
   }
   _onLayout = e => {
+    // const {width} = Dimensions.get('window');
     const ne_layout = e.nativeEvent.layout;
-    console.log('yyyyyy layout change width: ', width, ne_layout)
+    console.log('yyyyyy layout change width: ', ne_layout)
   }
 
   componentDidMount() {
