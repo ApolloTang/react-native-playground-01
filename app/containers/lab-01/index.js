@@ -15,6 +15,7 @@ const Action_navigateToRoute = (routeName, params) => {
   return NavigationActions.navigate({ routeName, params });
 };
 
+@connect(mapStoreToProps, mapDispatchToProps)
 class Screen_Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -41,4 +42,5 @@ class Screen_Dashboard extends React.Component {
 Screen_Dashboard.defaultProps = {
 };
 
-export default connect(mapStoreToProps, mapDispatchToProps)(Screen_Dashboard);
+// export default connect(mapStoreToProps, mapDispatchToProps)(Screen_Dashboard);
+export default Screen_Dashboard;
