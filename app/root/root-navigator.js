@@ -9,7 +9,7 @@ import Screen_collections from '../containers/collections/';
 import Screen_settings from '../containers/settings/';
 import Screen_details from '../containers/details/';
 
-import Screen_lab_01 from '../containers/lab-01/';
+import Screen_lab_01 from '../containers/lab-01-tiles-n-layout-change/';
 
 const navigatorMap_tab = {
   Dashboard: { screen: Screen_dashboard },
