@@ -9,34 +9,31 @@ import Screen_collections from '../containers/collections/';
 import Screen_settings from '../containers/settings/';
 import Screen_details from '../containers/details/';
 
+import Screen_lab_01 from '../containers/lab-01/';
 
 const navigatorMap_tab = {
   Dashboard: { screen: Screen_dashboard },
   Collections: { screen: Screen_collections },
   Settings: { screen: Screen_settings },
-  // dashboard: { screen: Screen_dashboard },
-  // collections: { screen: Screen_collections },
-  // setting: { screen: Screen_setting },
 };
 const Navigator_tab = TabNavigator( navigatorMap_tab );
 
 
 const navigatorMap_root = {
+  Lab: { screen: Screen_lab_01 },
   Login: {screen: Screen_login},
-  // ScreenA: { screen: ScreenA },
-  Tabs: { 
+  Tabs: {
     screen: Navigator_tab,
     navigationOptions: ({navigation}) => ({
       header: null,
     }),
   },
   Details: {screen: Screen_details},
-  // loggedIn: { screen: ScreenB },
-  // projectdetains: { screen: ScreenA },
 };
 
 const navigatorMap_options = {
-  initialRouteName: 'Login',
+  // initialRouteName: 'Lab', // initial route is set in reducer
+  // initialRouteName: 'Login',
 };
 
 const Navigator_root = StackNavigator( navigatorMap_root, navigatorMap_options );
