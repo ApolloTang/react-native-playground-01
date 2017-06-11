@@ -12,6 +12,7 @@ import Screen_details from '../containers/details/';
 import Screen_lab_01 from '../containers/lab-01-tiles-n-layout-change/';
 import Screen_lab_02 from '../containers/lab-02-list-view/';
 import Screen_lab_03 from '../containers/lab-03-list-view--tiles/';
+import Screen_lab_04 from '../containers/lab-04-list-view--tiles-dynamic-data/';
 
 const navigatorMap_tab = {
   Dashboard: { screen: Screen_dashboard },
@@ -22,7 +23,7 @@ const Navigator_tab = TabNavigator( navigatorMap_tab );
 
 
 const navigatorMap_root = {
-  Lab: { screen: Screen_lab_03 },
+  Lab: { screen: Screen_lab_04 },
   Login: {screen: Screen_login},
   Tabs: {
     screen: Navigator_tab,
