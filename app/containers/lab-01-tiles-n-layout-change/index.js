@@ -47,8 +47,8 @@ const calcTileDimensions = (deviceWidth, tpr) => {
   return { size, margin };
 };
 
-const Item = ({size, margin, text}) => (
-  <View style={[styles.item, {width: size, height: size, marginHorizontal: margin}]}>
+const Item = ({size, margin, text, index}) => (
+  <View key={index} style={[styles.item, {width: size, height: size, marginHorizontal: margin}]}>
     <Text style={styles.itemText}>{text}</Text>
   </View>
 );
@@ -76,7 +76,7 @@ class Lab extends React.Component {
         onLayout={this._onLayout}
         style={styles.container}
         >
-        {tiles.map(i => Item({...tileDimensions, text: i}))}
+        {tiles.map((i, index) => Item({...tileDimensions, text: i, index}))}
       </View>
     );
   }
