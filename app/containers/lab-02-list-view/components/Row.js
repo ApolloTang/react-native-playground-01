@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
+    borderWidth: 1,
+    backgroundColor:'pink',
     flex: 1,
     padding: 12,
     flexDirection: 'row',
@@ -19,7 +21,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Row = (props) => (
+const Row = (props) => {
+  console.log('uuuuuuuuuuuuuuuuuuu row: ', props)
+return (
   <View style={styles.container}>
     <Image source={{ uri: props.picture.large}} style={styles.photo} />
     <Text style={styles.text}>
@@ -27,5 +31,6 @@ const Row = (props) => (
     </Text>
   </View>
 );
+}
 
 export default Row;

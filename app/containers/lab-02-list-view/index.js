@@ -103,7 +103,7 @@ class ListViewDemo extends React.Component {
     return (
       <View style={styles.container}>
         <ListView
-          style={styles.container}
+          style={styles.containerListView}
           dataSource={this.state.dataSource}
           renderRow={(data) => <Row {...data} />}
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -118,13 +118,21 @@ class ListViewDemo extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    borderWidth: 1,
+    borderColor: 'red',
+    flex: 1,
+    marginTop: 20,
+  },
+  containerListView: {
+    borderWidth: 1,
+    borderColor: 'blue',
     flex: 1,
     marginTop: 20,
   },
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8E8E8E',
+    backgroundColor: 'yellow',
   },
 });
 
@@ -147,12 +155,7 @@ class Screen_Dashboard extends React.Component {
   render() {
     console.log('xxxxxx this.props: ', this.props)
     return (
-      <View>
-        <Text>
-          hello world
-        </Text>
-        <ListViewDemo />
-      </View>
+      <ListViewDemo />
     );
   }
 }
