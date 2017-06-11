@@ -10,6 +10,7 @@ import Screen_settings from '../containers/settings/';
 import Screen_details from '../containers/details/';
 
 import Screen_lab_01 from '../containers/lab-01-tiles-n-layout-change/';
+import Screen_lab_02 from '../containers/lab-02-list-view/';
 
 const navigatorMap_tab = {
   Dashboard: { screen: Screen_dashboard },
@@ -20,7 +21,7 @@ const Navigator_tab = TabNavigator( navigatorMap_tab );
 
 
 const navigatorMap_root = {
-  Lab: { screen: Screen_lab_01 },
+  Lab: { screen: Screen_lab_02 },
   Login: {screen: Screen_login},
   Tabs: {
     screen: Navigator_tab,
