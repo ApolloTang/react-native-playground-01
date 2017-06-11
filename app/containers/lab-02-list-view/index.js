@@ -18,6 +18,12 @@ const Action_navigateToRoute = (routeName, params) => {
 };
 
 //////////////////////////////////////
+//  From:
+//  https://github.com/andersr/react-native-list-view-demo
+//  Original tuturial
+//  https://medium.com/differential/react-native-basics-how-to-use-the-listview-component-a0ec44cf1fe8
+//
+//
 //
 import Row from './components/Row'
 import Header from './components/Header'

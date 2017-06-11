@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 const Row = (props) => {
-  console.log('uuuuuuuuuuuuuuuuuuu row: ', props)
+  // console.log('uuuuuuuuuuuuuuuuuuu row: ', props)
 return (
   <View style={styles.container}>
     <Image source={{ uri: props.picture.large}} style={styles.photo} />
