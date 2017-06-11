@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import styles from 'postman_sync/app/common/globalStyles';
+import styles from 'playground01/app/common/globalStyles';
 import Spinner from '../spinner/';
 
 const AppLoadingView = () => (

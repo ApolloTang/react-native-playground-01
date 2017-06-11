@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-import appConfig from 'postman_sync/app/appConfig';
-import store from 'postman_sync/app/root/store';
-import {createHttp} from 'postman_sync/app/util/rest';
-import c from 'postman_sync/app/common/actionNames';
+import appConfig from 'playground01/app/appConfig';
+import store from 'playground01/app/root/store';
+import {createHttp} from 'playground01/app/util/rest';
+import c from 'playground01/app/common/actionNames';
 
 const rootUrl = _.get(appConfig, `rootUrl`, void 0);
 

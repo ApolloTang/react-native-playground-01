@@ -1,4 +1,4 @@
-package com.postman_sync;
+package com.playground01;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "postman_sync";
+        return "playground01";
     }
 }

@@ -1,8 +1,8 @@
-import resources from 'postman_sync/app/resources/actionNames';
-import sessions from 'postman_sync/app/sessions/actionNames';
-import login from 'postman_sync/app/containers/login/actionNames';
-import collections from 'postman_sync/app/containers/collections/actionNames';
-import details from 'postman_sync/app/containers/details/actionNames';
+import resources from 'playground01/app/resources/actionNames';
+import sessions from 'playground01/app/sessions/actionNames';
+import login from 'playground01/app/containers/login/actionNames';
+import collections from 'playground01/app/containers/collections/actionNames';
+import details from 'playground01/app/containers/details/actionNames';
 
 const Symbol = require('es6-symbol');
 

@@ -2,8 +2,8 @@ import {combineReducers} from 'redux';
 
 import nav from './nav';
 import app from './app';
-import resources from 'postman_sync/app/resources/reducers/';
-import sessions from 'postman_sync/app/sessions/reducers/';
+import resources from 'playground01/app/resources/reducers/';
+import sessions from 'playground01/app/sessions/reducers/';
 
 const reducer_root = combineReducers({
   nav,

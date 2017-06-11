@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import c from 'postman_sync/app/common/actionNames';
+import c from 'playground01/app/common/actionNames';
 
-import API from 'postman_sync/app/services/api';
+import API from 'playground01/app/services/api';
 
 // const mockData = {
 //   ids_collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],

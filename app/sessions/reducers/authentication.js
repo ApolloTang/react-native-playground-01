@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
-import c from 'postman_sync/app/common/actionNames';
+import c from 'playground01/app/common/actionNames';
 
-import {array_to_IndexObj} from 'postman_sync/app/util/helper.js';
+import {array_to_IndexObj} from 'playground01/app/util/helper.js';
 
 initialState = {
   token: void 0,

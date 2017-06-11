@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import store from 'postman_sync/app/root/store';
+import store from 'playground01/app/root/store';
 
 function getToken() {
   const storeState = store.getState();
