@@ -14,6 +14,7 @@ import Screen_lab_02 from '../containers/lab-02-list-view/';
 import Screen_lab_03 from '../containers/lab-03-list-view--tiles/';
 import Screen_lab_04 from '../containers/lab-04-list-view--tiles-dynamic-data/';
 import Screen_lab_05 from '../containers/lab-05-flatList-n-listview-tiles-dynamic-data/';
+import Screen_lab_06 from '../containers/lab-06-flatList-tiles-dynamic-data/';
 
 
 const navigatorMap_tab = {
@@ -25,7 +26,7 @@ const Navigator_tab = TabNavigator( navigatorMap_tab );
 
 
 const navigatorMap_root = {
-  Lab: { screen: Screen_lab_05 },
+  Lab: { screen: Screen_lab_06 },
   Login: {screen: Screen_login},
   Tabs: {
     screen: Navigator_tab,
