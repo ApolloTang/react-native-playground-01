@@ -24,8 +24,13 @@ const Action_navigateToRoute = (routeName, params) => {
 /////////////////////////////////////////
 /*
   https://medium.com/react-native-development/how-to-use-the-flatlist-component-react-native-basics-92c482816fe6
+  https://www.youtube.com/watch?v=pHLFJs7jlI4
+  https://www.youtube.com/watch?v=rY0braBBlgw
 */
 /////////////////////////////////////////
+
+
+
 const styles = StyleSheet.create({
     list: {
         flexDirection: 'row',
@@ -41,15 +46,15 @@ const styles = StyleSheet.create({
 });
 
 
+// -- Create Data -- //
 const myData = void 0;
-// Create Data (Start)
 (function(){
   const data = [];
   [1,2,3].forEach(i=>{
     i--;
     const a = [];
 
-    const length = 10;
+    const length = 50;
     const start = length*i + 1
     const end = start + length - 1
 
@@ -63,67 +68,63 @@ const myData = void 0;
     data[i] = a;
   })
 
-  console.log('xxxxxx data, data', data)
   myData = data;
 })()
-// Create Data (End)
 
+
+// -- Mock fetch -- //
 const fetchData = (page) => {
+  console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx fetching page: ', page)
   return new Promise((rs, rj) => {
+    const MAX_NUM_OF_PAGE = 3
     setTimeout(
       ()=>{
-        rs(myData[page]);
-        console.log('resolve')
+        if (page > MAX_NUM_OF_PAGE ) {
+          rs([]);
+        }
+        rs(myData[page-1]);
       }, 1000
     )
   }).then( data => data )
 };
 
+
 @connect(mapStoreToProps, mapDispatchToProps)
 class Screen_05 extends React.Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-    this._data = myData[0]
     this.state = {
-      dataSource: ds.cloneWithRows(this._data),
       refreshing: false,
-      isLoading: true,
+      isLoading: false,
       data4FlatList: []
     }
+    this._currentPage = 0;
   }
 
   componentDidMount() {
-    const page = 0
-    fetchData(page).then(
-      data => {
-        this.setState({
-          data4FlatList: data,
-          refreshing: false
-        })
-      }
-    )
-  }
-
-  componentDidUpdate(prevProps) { }
-
-  handle_ListViewAddData = (dataSet)=>{
-    this._data = this._data.concat(myData[dataSet]);
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(this._data),
-      data4FlatList: _.uniqBy( // uniqBy is need because flat will not take duplicated id
-        this.state.data4FlatList.concat(myData[dataSet]),'id'
-      ),
-    });
+    // const page = this._currentPage;
+    // this.setState({
+    //   isLoading: true,
+    //   data4FlatList: []
+    // });
+    //
+    // fetchData(page).then(
+    //   data => {
+    //     this.setState({
+    //       data4FlatList: data,
+    //       refreshing: false
+    //     })
+    //   }
+    // )
   }
 
   handle_refresh = ()=>{
+    this._currentPage = 1;
     this.setState({
       refreshing: true
     })
-    const page = 0
-    fetchData(page).then(
+    fetchData(this._currentPage).then(
       data => {
         this.setState({
           data4FlatList: data,
@@ -133,8 +134,40 @@ class Screen_05 extends React.Component {
     )
   }
 
+  handle_onEndReached = ()=>{
+    console.log('xxxxxxxxxxxxxxxxxx End reach')
+    this._currentPage++
+    this.setState({
+      isLoading: true
+    })
+
+    fetchData(this._currentPage).then(
+      data => {
+        this.setState({
+          data4FlatList: this.state.data4FlatList.concat(data),
+          isLoading: false
+        })
+      }
+    )
+  }
+
+  renderFooter = () => {
+    if (!this.state.isLoading) return null;
+
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }} >
+        <Text>...loading</Text>
+      </View>
+    );
+  };
+
   render() {
-    console.log('xxxxx this._dtat: ', this._data)
+    console.log('xxxxx this.data4FlatList ', this.state.data4FlatList)
     return (
       <View style={{flex:1}}>
         <View style={{ flex:3, borderWidth:1, borderColor:'red'}}>
@@ -142,31 +175,15 @@ class Screen_05 extends React.Component {
             contentContainerStyle={styles.list}
             keyExtractor={item => item.id}
             data={this.state.data4FlatList}
-            renderItem={({item}) => {
-                return <Text  style={styles.item}>{item.id}</Text>
-            }}
+            renderItem={({item}) => { return <Text  style={styles.item}>{item.id}</Text> }}
             refreshing={this.state.refreshing}
             onRefresh={this.handle_refresh}
+            onEndReached={this.handle_onEndReached}
+            onEndThreshold={0}
+            ListFooterComponent={this.renderFooter}
           />
         </View>
-        <View style={{ flex:1, borderWidth:1, borderColor:'red'}}>
-          <TouchableOpacity onPress={()=>this.handle_ListViewAddData(2)}>
-            <Text>Add dataSet 2</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.handle_ListViewAddData(1)}>
-            <Text>Add dataSet 1</Text>
-          </TouchableOpacity>
-        </View>
         <View style={{ flex:3, borderWidth:1, borderColor:'red'}}>
-        <ListView contentContainerStyle={styles.list}
-          dataSource={this.state.dataSource}
-          initialListSize={20}
-          renderRow={
-            (rowData, i) => {
-              return <Text key={i} style={styles.item}>{rowData.id}</Text>
-            }
-          }
-        />
         </View>
       </View>
     );
